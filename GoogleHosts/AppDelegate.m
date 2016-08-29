@@ -49,9 +49,7 @@ static NSString *kOldHostsKey = @"oldHostsKey";
     
     NSString *order = [NSString stringWithFormat:@"echo '%@' >~/../../private/etc/hosts", hosts];
     
-    NSMutableArray *args = [NSMutableArray array];
-    [args addObject:@"-c"];
-    [args addObject:order];
+    NSArray *args = @[@"-c", order, @"killall -HUP mDNSResponder"];
     
     const char **argv = (const char **)malloc(sizeof(char *) * [args count] + 1);
     int argvIndex = 0;
@@ -60,7 +58,6 @@ static NSString *kOldHostsKey = @"oldHostsKey";
         argvIndex++;
     }
     argv[argvIndex] = nil;
-
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored"-Wdeprecated-declarations"

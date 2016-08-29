@@ -47,14 +47,20 @@ static NSString *kOldHostsKey = @"oldHostsKey";
         return NO;
     }
     
-    NSString *order = [NSString stringWithFormat:@"echo '%@' >~/../../private/etc/hosts", hosts];
+    NSString *order = [NSString stringWithFormat:@"echo '%@' >/private/etc/hosts", hosts];
     
     int result = system([order UTF8String]);
+    
     if (result == 0) {
         return YES;
     } else {
         return NO;
     }
+}
+
+- (void)enableButton:(BOOL)isEnable {
+    self.updateButton.enabled = isEnable;
+    self.recoverButton.enabled = isEnable;
 }
 
 - (BOOL)isUnlocked {
@@ -67,17 +73,25 @@ static NSString *kOldHostsKey = @"oldHostsKey";
 
 - (IBAction)updateButtonOnClicked:(id)sender {
     
-    [self hostsBackups];
+    self.tipsLabel.stringValue = @"正在更新...";
+    [self enableButton:NO];
     
-    NSURL *url = [NSURL URLWithString:@"https://raw.githubusercontent.com/racaljk/hosts/master/hosts"];
-    NSString *hosts = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    
-    BOOL isSeccess = [self writeHosts:hosts];
-    if (isSeccess) {
-        self.tipsLabel.stringValue = @"更新成功";
-    } else {
-        self.tipsLabel.stringValue = @"更新失败";
-    }
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self hostsBackups];
+        
+        NSURL *url = [NSURL URLWithString:@"https://raw.githubusercontent.com/racaljk/hosts/master/hosts"];
+        NSString *hosts = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        
+        BOOL isSeccess = [self writeHosts:hosts];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (isSeccess) {
+                self.tipsLabel.stringValue = @"更新成功";
+            } else {
+                self.tipsLabel.stringValue = @"更新失败";
+            }
+            [self enableButton:YES];
+        });
+    });
 }
 
 - (IBAction)recoverButtonOnClicked:(id)sender {
@@ -95,14 +109,13 @@ static NSString *kOldHostsKey = @"oldHostsKey";
 
 - (void)authorizationViewDidAuthorize:(SFAuthorizationView *)view {
     self.tipsLabel.stringValue = @"请点击更新按钮更新Google hosts";
-    [self.updateButton setEnabled:[self isUnlocked]];
-    [self.recoverButton setEnabled:[self isUnlocked]];
+    [self enableButton:[self isUnlocked]];
 }
 
 - (void)authorizationViewDidDeauthorize:(SFAuthorizationView *)view {
     self.tipsLabel.stringValue = @"请先解锁";
-    [self.updateButton setEnabled:[self isUnlocked]];
-    [self.recoverButton setEnabled:[self isUnlocked]];
+    
+    [self enableButton:[self isUnlocked]];
 }
 
 

@@ -676,6 +676,10 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="500" height="281"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <value key="minSize" type="size" width="500" height="281"/>
+            <value key="maxSize" type="size" width="500" height="281"/>
+            <value key="minFullScreenContentSize" type="size" width="500" height="281"/>
+            <value key="maxFullScreenContentSize" type="size" width="500" height="281"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="500" height="281"/>
                 <autoresizingMask key="autoresizingMask"/>

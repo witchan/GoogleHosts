@@ -18,7 +18,7 @@
 @property (weak) IBOutlet NSTextField *tipsLabel;
 @property (weak) IBOutlet NSButton *updateButton;
 @property (weak) IBOutlet NSButton *recoverButton;
-@property (weak) IBOutlet SFAuthorizationView *authView;
+@property (strong, nonatomic) SFAuthorizationView *authView;
 
 - (BOOL)isUnlocked;
 

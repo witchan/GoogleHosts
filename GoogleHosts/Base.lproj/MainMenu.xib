@@ -14,7 +14,6 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
-                <outlet property="authView" destination="5gu-jk-DHh" id="cSk-7Y-6y7"/>
                 <outlet property="recoverButton" destination="ffH-d6-cWx" id="LHN-ge-E0G"/>
                 <outlet property="tipsLabel" destination="gD5-qk-Y1a" id="DQA-VI-m3c"/>
                 <outlet property="updateButton" destination="PE9-6G-a7s" id="9W5-5K-wGE"/>
@@ -685,18 +684,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gD5-qk-Y1a">
-                        <rect key="frame" x="125" y="205" width="251" height="20"/>
+                        <rect key="frame" x="125" y="175" width="251" height="20"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="请点击更新按钮更新Google hosts" id="asy-iS-gb1">
                             <font key="font" size="16" name=".PingFangSC-Regular"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5gu-jk-DHh" customClass="SFAuthorizationView">
-                        <rect key="frame" x="28" y="20" width="376" height="41"/>
-                    </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PE9-6G-a7s">
-                        <rect key="frame" x="143" y="112" width="72" height="55"/>
+                        <rect key="frame" x="143" y="82" width="72" height="55"/>
                         <buttonCell key="cell" type="bevel" title="更新" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hjU-EZ-aSQ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -706,7 +702,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-d6-cWx">
-                        <rect key="frame" x="280" y="112" width="77" height="55"/>
+                        <rect key="frame" x="280" y="82" width="77" height="55"/>
                         <buttonCell key="cell" type="bevel" title="还原" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fEr-Hv-sJH">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name=".PingFangSC-Regular"/>

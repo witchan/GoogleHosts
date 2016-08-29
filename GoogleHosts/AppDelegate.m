@@ -47,11 +47,30 @@ static NSString *kOldHostsKey = @"oldHostsKey";
         return NO;
     }
     
-    NSString *order = [NSString stringWithFormat:@"echo '%@' >/private/etc/hosts", hosts];
+    NSString *order = [NSString stringWithFormat:@"echo '%@' >~/../../private/etc/hosts", hosts];
     
-    int result = system([order UTF8String]);
+    NSMutableArray *args = [NSMutableArray array];
+    [args addObject:@"-c"];
+    [args addObject:order];
     
-    if (result == 0) {
+    const char **argv = (const char **)malloc(sizeof(char *) * [args count] + 1);
+    int argvIndex = 0;
+    for (NSString *string in args) {
+        argv[argvIndex] = [string UTF8String];
+        argvIndex++;
+    }
+    argv[argvIndex] = nil;
+
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wdeprecated-declarations"
+
+    OSErr processError = AuthorizationExecuteWithPrivileges([[self.authView authorization] authorizationRef], [@"/bin/sh" UTF8String],
+                                                            kAuthorizationFlagDefaults, (char *const *)argv, nil);
+#pragma clang diagnostic pop
+    free(argv);
+    
+    if (processError == errAuthorizationSuccess) {
         return YES;
     } else {
         return NO;

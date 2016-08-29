@@ -41,7 +41,7 @@
 	<key>DTXcodeBuild</key>
 	<string>7D1014</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.11</string>
+	<string>10.8</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2016年 Witchan. All rights reserved.</string>
 	<key>NSMainNibFile</key>

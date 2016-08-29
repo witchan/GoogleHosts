@@ -697,6 +697,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name=".PingFangSC-Regular"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="updateButtonOnClicked:" target="Voe-Tx-rLC" id="YMB-rt-6S9"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-d6-cWx">
                         <rect key="frame" x="280" y="112" width="77" height="55"/>
@@ -704,6 +707,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name=".PingFangSC-Regular"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="recoverButtonOnClicked:" target="Voe-Tx-rLC" id="BAd-UT-RMU"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>

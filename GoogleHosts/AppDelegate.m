@@ -13,15 +13,16 @@ static NSString *kOldHostsKey = @"oldHostsKey";
 @interface AppDelegate ()
 
 @property (copy, nonatomic) NSString *hostsPath;
+@property (assign, nonatomic) AuthorizationRef authorizationRef;
 
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-
+    
+    [self authorizationRef];
 }
-
 
 #pragma mark - Private
 
@@ -53,8 +54,8 @@ static NSString *kOldHostsKey = @"oldHostsKey";
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored"-Wdeprecated-declarations"
-
-    OSErr processError = AuthorizationExecuteWithPrivileges([[self.authView authorization] authorizationRef], [@"/bin/sh" UTF8String],
+    
+    OSErr processError = AuthorizationExecuteWithPrivileges(self.authorizationRef, [@"/bin/sh" UTF8String],
                                                             kAuthorizationFlagDefaults, (char *const *)argv, nil);
 #pragma clang diagnostic pop
     free(argv);
@@ -69,11 +70,6 @@ static NSString *kOldHostsKey = @"oldHostsKey";
 - (void)enableButton:(BOOL)isEnable {
     self.updateButton.enabled = isEnable;
     self.recoverButton.enabled = isEnable;
-}
-
-- (BOOL)isUnlocked {
-    
-    return [self.authView authorizationState] == SFAuthorizationViewUnlockedState;
 }
 
 
@@ -122,15 +118,39 @@ static NSString *kOldHostsKey = @"oldHostsKey";
     return _hostsPath;
 }
 
-- (SFAuthorizationView *)authView {
-    if (_authView == nil) {
-        _authView = [[SFAuthorizationView alloc] init];
-        AuthorizationItem items = {kAuthorizationRightExecute, 0, NULL, 0};
-        AuthorizationRights rights = {1, &items};
-        [_authView setAuthorizationRights:&rights];
-        [_authView updateStatus:nil];
+- (AuthorizationRef) authorizationRef {
+    if (_authorizationRef == nil) {
+        
+        OSStatus myStatus;
+        
+        myStatus = AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment,
+                                        kAuthorizationFlagExtendRights | kAuthorizationFlagInteractionAllowed , &_authorizationRef);
+        AuthorizationItem myItems[1];
+        
+        myItems[0].name = kAuthorizationRightExecute;
+        myItems[0].valueLength = 0;
+        myItems[0].value = NULL;
+        myItems[0].flags = 0;
+        
+        AuthorizationRights myRights;
+        myRights.count = sizeof (myItems) / sizeof (myItems[0]);
+        myRights.items = myItems;
+        
+        AuthorizationFlags myFlags;
+        myFlags = kAuthorizationFlagDefaults |
+        kAuthorizationFlagInteractionAllowed |
+        kAuthorizationFlagExtendRights;
+        
+        myStatus = AuthorizationCopyRights (_authorizationRef, &myRights,
+                                            kAuthorizationEmptyEnvironment, myFlags, NULL);
+        
+        if (myStatus !=errAuthorizationSuccess)
+        {
+            _authorizationRef = nil;
+        }
     }
-    return _authView;
+    return _authorizationRef;
 }
+
 
 @end

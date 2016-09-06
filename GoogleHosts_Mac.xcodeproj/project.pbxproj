@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EB5D6C191D74309400E48AF1 /* GoogleHosts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleHosts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB5D6C191D74309400E48AF1 /* GoogleHosts_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleHosts_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5D6C1C1D74309400E48AF1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EB5D6C1D1D74309400E48AF1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		EB5D6C201D74309400E48AF1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		EB5D6C1A1D74309400E48AF1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EB5D6C191D74309400E48AF1 /* GoogleHosts.app */,
+				EB5D6C191D74309400E48AF1 /* GoogleHosts_Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,9 +78,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EB5D6C181D74309400E48AF1 /* GoogleHosts */ = {
+		EB5D6C181D74309400E48AF1 /* GoogleHosts_Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB5D6C2A1D74309400E48AF1 /* Build configuration list for PBXNativeTarget "GoogleHosts" */;
+			buildConfigurationList = EB5D6C2A1D74309400E48AF1 /* Build configuration list for PBXNativeTarget "GoogleHosts_Mac" */;
 			buildPhases = (
 				EB5D6C151D74309400E48AF1 /* Sources */,
 				EB5D6C161D74309400E48AF1 /* Frameworks */,
@@ -90,9 +90,9 @@
 			);
 			dependencies = (
 			);
-			name = GoogleHosts;
+			name = GoogleHosts_Mac;
 			productName = GoogleHosts;
-			productReference = EB5D6C191D74309400E48AF1 /* GoogleHosts.app */;
+			productReference = EB5D6C191D74309400E48AF1 /* GoogleHosts_Mac.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -109,7 +109,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EB5D6C141D74309400E48AF1 /* Build configuration list for PBXProject "GoogleHosts" */;
+			buildConfigurationList = EB5D6C141D74309400E48AF1 /* Build configuration list for PBXProject "GoogleHosts_Mac" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -122,7 +122,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EB5D6C181D74309400E48AF1 /* GoogleHosts */,
+				EB5D6C181D74309400E48AF1 /* GoogleHosts_Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -253,7 +253,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_BUNDLE_IDENTIFIER = blog.witchan.com.GoogleHosts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GoogleHosts_Mac;
 			};
 			name = Debug;
 		};
@@ -266,14 +266,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_BUNDLE_IDENTIFIER = blog.witchan.com.GoogleHosts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GoogleHosts_Mac;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EB5D6C141D74309400E48AF1 /* Build configuration list for PBXProject "GoogleHosts" */ = {
+		EB5D6C141D74309400E48AF1 /* Build configuration list for PBXProject "GoogleHosts_Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB5D6C281D74309400E48AF1 /* Debug */,
@@ -282,7 +282,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EB5D6C2A1D74309400E48AF1 /* Build configuration list for PBXNativeTarget "GoogleHosts" */ = {
+		EB5D6C2A1D74309400E48AF1 /* Build configuration list for PBXNativeTarget "GoogleHosts_Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB5D6C2B1D74309400E48AF1 /* Debug */,
